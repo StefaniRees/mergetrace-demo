@@ -29,4 +29,16 @@ describe("calcularFrete", () => {
   test("frete cobrado no sul abaixo de R$150", () => {
     expect(calcularFrete(100, "sul")).toBe(15);
   });
+
+  test("frete norte grátis acima de R$200", () => {
+    expect(calcularFrete(250, "norte")).toBe(0);
+  });
+
+  test("frete norte cobrado abaixo de R$200", () => {
+    expect(calcularFrete(100, "norte")).toBe(25);
+  });
+
+  test("frete padrão para outras regiões", () => {
+    expect(calcularFrete(100, "sudeste")).toBe(20);
+  });
 });
