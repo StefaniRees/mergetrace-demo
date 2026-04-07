@@ -4,7 +4,7 @@
   "description": "Repositório de demonstração dos cenários de uso do guideline MergeTrace",
   "scripts": {
     "test": "jest",
-    "test:coverage": "jest --coverage --coverageThreshold='{\"global\":{\"lines\":80}}'"
+    "test:coverage": "jest --coverage --coverageThreshold={\"global\":{\"lines\":80}}"
   },
   "devDependencies": {
     "jest": "^29.7.0"
