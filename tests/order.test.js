@@ -1,5 +1,5 @@
 // tests/order.test.js
-const { calcularTotal, aplicarDesconto, calcularFrete } = require("../src/order");
+const { calcularTotal, aplicarDesconto, calcularFrete, aplicarDescontoProgressivo } = require("../src/order");
 
 describe("calcularTotal", () => {
   test("calcula total simples corretamente", () => {
@@ -40,5 +40,22 @@ describe("calcularFrete", () => {
 
   test("frete padrão para outras regiões", () => {
     expect(calcularFrete(100, "sudeste")).toBe(20);
+  });
+});
+
+describe("aplicarDescontoProgressivo", () => {
+  test("sem desconto para 5 itens ou menos", () => {
+    const itens = [{ preco: 10, quantidade: 5 }];
+    expect(aplicarDescontoProgressivo(itens)).toBe(50);
+  });
+
+  test("5% de desconto para mais de 5 itens", () => {
+    const itens = [{ preco: 10, quantidade: 6 }];
+    expect(aplicarDescontoProgressivo(itens)).toBeCloseTo(57);
+  });
+
+  test("10% de desconto para mais de 10 itens", () => {
+    const itens = [{ preco: 10, quantidade: 11 }];
+    expect(aplicarDescontoProgressivo(itens)).toBeCloseTo(99);
   });
 });

@@ -17,4 +17,12 @@ function calcularFrete(total, regiao) {
   return 20;
 }
 
-module.exports = { calcularTotal, aplicarDesconto, calcularFrete };
+function aplicarDescontoProgressivo(itens) {
+  const quantidade = itens.reduce((acc, item) => acc + item.quantidade, 0);
+  const total = calcularTotal(itens);
+  if (quantidade > 10) return total * 0.90;
+  if (quantidade > 5) return total * 0.95;
+  return total;
+}
+
+module.exports = { calcularTotal, aplicarDesconto, calcularFrete, aplicarDescontoProgressivo };
