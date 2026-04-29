@@ -12,4 +12,10 @@ function calcularParcelas(total, parcelas) {
   return parcelas <= 3 ? total / parcelas : (total * 1.02) / parcelas;
 }
 
-module.exports = { validarCartao, calcularParcelas };
+function calcularTaxa(metodo, valor) {
+  if (metodo === "credito") return valor * 0.03;
+  if (metodo === "boleto") return 3.5;
+  return 0;
+}
+
+module.exports = { validarCartao, calcularParcelas, calcularTaxa };
